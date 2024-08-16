@@ -1,0 +1,4 @@
+__pycache__/
+bot.log
+*.json
+*.md
