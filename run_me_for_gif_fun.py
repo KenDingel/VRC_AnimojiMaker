@@ -5,6 +5,7 @@ import logging
 import re
 import os
 import requests
+import traceback
 from bs4 import BeautifulSoup
 from gif_processor import process_gif, process_mp4
 from utils import setup_logging, create_temp_dir, cleanup_temp_dir
@@ -38,7 +39,6 @@ async def on_message(message):
 
     logger.info(f'Processing message from {message.author}: {message.content}')
     print(f'Processing message from {message.author}: {message.content}')
-    await message.add_reaction('⏳')
 
     # Extract user settings from the message
     settings = extract_settings(message.content)
@@ -82,6 +82,7 @@ def extract_settings(content):
     return settings
 
 async def process_file_message(message, url, filename, settings):
+    await message.add_reaction('⏳')
     temp_dir = create_temp_dir()
     logger.info(f'Created temporary directory: {temp_dir}')
     print(f'Created temporary directory: {temp_dir}')
@@ -113,12 +114,13 @@ async def process_file_message(message, url, filename, settings):
         await message.add_reaction('💀')
         await message.channel.send(f'Error: Sprite sheet could not be created. Please try again.')
     except Exception as e:
-        logger.error(f'Error processing file: {str(e)}')
+        tb = traceback.format_exc()
+        logger.error(f'Error processing file: {str(e)} TRACEBACK: {tb}')
         print(f'Error processing file: {str(e)}')
         await message.add_reaction('💀')
         await message.channel.send(f'Error processing file: {str(e)}')
     finally:
-        #cleanup_temp_dir(temp_dir)
+        cleanup_temp_dir(temp_dir)
         logger.info(f'Cleaned up temporary directory: {temp_dir}')
         print(f'Cleaned up temporary directory: {temp_dir}')
 

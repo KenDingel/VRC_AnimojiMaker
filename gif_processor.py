@@ -56,6 +56,9 @@ def create_sprite_sheet(gif_path, temp_dir, settings):
     info = {}
     
     with Image(filename=gif_path) as img:
+        # Coalesce the image to properly handle disposal methods
+        img.coalesce()
+        
         # Get original FPS and dimensions
         original_fps = img.delay
         if original_fps == 0:
@@ -66,18 +69,15 @@ def create_sprite_sheet(gif_path, temp_dir, settings):
         original_width, original_height = img.width, img.height
         original_frame_count = len(img.sequence)
         
-        # Convert sequence to a list if it's not already
-        img_sequence = list(img.sequence)
-        
         # Limit to 64 frames
-        img_sequence = img_sequence[:64]
+        img.sequence = img.sequence[:64]
         
         # Apply user settings
         if settings.get('frame_count'):
-            img_sequence = img_sequence[:min(settings['frame_count'], 64)]
+            img.sequence = img.sequence[:min(settings['frame_count'], 64)]
         
         # Determine tile configuration based on frame count
-        frame_count = len(img_sequence)
+        frame_count = len(img.sequence)
         if frame_count <= 4:
             tile = "2x2"
             frame_size = 512
@@ -92,14 +92,12 @@ def create_sprite_sheet(gif_path, temp_dir, settings):
         tile = settings.get('tile', tile)
         cols, rows = map(int, tile.split('x'))
         
-        # Create a new blank image with white background
-        with Image(width=cols*frame_size, height=rows*frame_size, background='transparent') as canvas:
-            for i, frame in enumerate(img_sequence):
+        # Create a new blank image with transparent background
+        with Image(width=cols*frame_size, height=rows*frame_size, background=None) as canvas:
+            for i, frame in enumerate(img.sequence):
                 with frame.clone() as f:
-                    # Remove alpha channel to eliminate transparency
-                    if f.alpha_channel:
-                        f.background_color = 'transparent'
-                        f.alpha_channel = 'activate'
+                    # Remove alpha channel to eliminate transparency issues
+                    f.alpha_channel = 'remove'
                     
                     # Calculate scaling factor to fit within frame_size while maintaining aspect ratio
                     scale = min(frame_size / f.width, frame_size / f.height)
