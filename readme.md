@@ -1,22 +1,25 @@
-# Discord GIF to Sprite Sheet Bot
+# VRC_AnimojiMaker
 
-This Discord bot converts GIFs and MP4 files into sprite sheets, making them suitable for use as animated emojis in VRChat. It processes uploaded files or links, including Tenor GIFs, and generates a 1024x1024 sprite sheet along with detailed conversion information.
+## Authors: coolkiwiii and Ken (alphabetically)
+
+
+This Discord bot converts GIFs and MP4 files into sprite sheets for use as animated emojis in VRChat! Works with uploaded files, links, or GIFs from the Discord GIF menu! The bot also provides detailed information in a pretty embed :)
 
 ## Features
 
 - Converts GIFs and MP4 files into sprite sheets for VRChat animated emojis.
-- Supports direct file uploads and links (including Tenor GIFs).
-- Automatically determines the optimal sprite sheet layout.
-- Allows user-specified settings for frame count, FPS, and tile configuration.
+- Supports direct file uploads and links (including Tenor GIFs from the Discord GIF Menu).
+- Automatically determines the correct frame count and FPS.
 - Maintains aspect ratio and centers frames within cells.
 - Provides detailed information about the conversion process.
-- Sends results as a pretty embed message with the sprite sheet image.
+- Sends results as a *pretty* embed message with the sprite sheet image.
 
 ## Requirements
 
 - Python 3.9+
-- FFmpeg (for MP4 to GIF conversion)
-- ImageMagick (used by Wand for image processing)
+- Required Python packages (see below!)
+- [FFmpeg](https://ffmpeg.org/download.html)
+- [ImageMagick](https://imagemagick.org/script/download.php)
 
 ## Installation
 
@@ -33,8 +36,8 @@ This Discord bot converts GIFs and MP4 files into sprite sheets, making them sui
 
 3. **Install FFmpeg and ImageMagick:**
    - **Windows:**
-     - FFmpeg: Download from ffmpeg.org and add to PATH.
-     - ImageMagick: Download from imagemagick.org and install.
+     - FFmpeg: [Download from ffmpeg.org](https://ffmpeg.org/download.html) and add to PATH.
+     - ImageMagick: Use the [instructions provided by Wand](https://docs.wand-py.org/en/0.6.12/guide/install.html) for proper set up!
    - **macOS (using Homebrew):**
      ```bash
      brew install ffmpeg imagemagick
@@ -53,7 +56,7 @@ This Discord bot converts GIFs and MP4 files into sprite sheets, making them sui
      "log_file": "bot.log"
    }
    ```
-   Replace `YOUR_BOT_TOKEN_HERE` with your Discord bot token and `YOUR_CHANNEL_ID_HERE` with the ID of the channel where the bot should operate. An example is provided in `config_TEMPLATE.json`.
+   Replace `YOUR_BOT_TOKEN_HERE` with your Discord bot token and `YOUR_CHANNEL_ID_HERE` with the ID of the channel where the bot should operate.
 
 ## Usage
 
@@ -77,4 +80,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## VRChat Guidelines
 
-When using the generated sprite sheets in VRChat, ensure they comply with VRChat's content guidelines. Content should be safe for work and not include any inflammatory or suggestive material[2][9].
+When using the generated sprite sheets in VRChat, ensure they comply with VRChat's content guidelines. Content should be safe for work and not include any inflammatory or suggestive material.
