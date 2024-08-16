@@ -3,13 +3,13 @@
 ## Authors: coolkiwiii and Ken (alphabetically)
 
 
-This Discord bot converts GIFs and MP4 files into sprite sheets, making them suitable for use as animated emojis in VRChat. It processes uploaded files or links, including Tenor GIFs, and generates a 1024x1024 sprite sheet along with detailed conversion information.
+This Discord bot converts GIFs and MP4 files into sprite sheets for use as animated emojis in VRChat! Works with uploaded files, links, or GIFs from the Discord GIF menu! The bot also provides detailed information in a pretty embed :)
 
 ## Features
 
 - Converts GIFs and MP4 files into sprite sheets for VRChat animated emojis.
-- Supports direct file uploads and links (including Tenor GIFs).
-- Automatically determines the frame count and FPS.
+- Supports direct file uploads and links (including Tenor GIFs from the Discord GIF Menu).
+- Automatically determines the correct frame count and FPS.
 - Maintains aspect ratio and centers frames within cells.
 - Provides detailed information about the conversion process.
 - Sends results as a *pretty* embed message with the sprite sheet image.
