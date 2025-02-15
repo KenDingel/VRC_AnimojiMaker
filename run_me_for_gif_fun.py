@@ -33,7 +33,7 @@ async def on_message(message):
     if message.author.bot:
         return
 
-    if message.channel.id != CONFIG['channel_id']:
+    if message.channel.id != CONFIG['channel_id'] and message.channel.id != CONFIG['channel_id_2']:
         logger.info(f'Message received in non-target channel. Channel ID: {message.channel.id}')
         return
 

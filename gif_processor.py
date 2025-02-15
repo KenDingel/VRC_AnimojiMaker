@@ -93,11 +93,12 @@ def create_sprite_sheet(gif_path, temp_dir, settings):
         cols, rows = map(int, tile.split('x'))
         
         # Create a new blank image with transparent background
-        with Image(width=cols*frame_size, height=rows*frame_size, background=None) as canvas:
+        #with Image(width=cols*frame_size, height=rows*frame_size, background=None) as canvas:
+        with Image(width=cols*frame_size, height=rows*frame_size, background='transparent') as canvas:
             for i, frame in enumerate(img.sequence):
                 with frame.clone() as f:
                     # Remove alpha channel to eliminate transparency issues
-                    f.alpha_channel = 'remove'
+                    #f.alpha_channel = 'remove'
                     
                     # Calculate scaling factor to fit within frame_size while maintaining aspect ratio
                     scale = min(frame_size / f.width, frame_size / f.height)
