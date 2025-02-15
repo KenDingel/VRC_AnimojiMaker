@@ -37,7 +37,7 @@ This Discord bot converts GIFs and MP4 files into sprite sheets for use as anima
 3. **Install FFmpeg and ImageMagick:**
    - **Windows:**
      - FFmpeg: [Download from ffmpeg.org](https://ffmpeg.org/download.html) and add to PATH.
-     - ImageMagick: Use the [instructions provided by Wand](https://docs.wand-py.org/en/0.6.12/guide/install.html) for proper set up!
+     - ImageMagick: Use the [instructions provided by Wand](https://docs.wand-py.org/en/0.6.12/guide/install.html) for proper set up! BE SURE TO INSTALL DEV C++ IN THE INSTALL!
    - **macOS (using Homebrew):**
      ```bash
      brew install ffmpeg imagemagick
