@@ -2,6 +2,7 @@
 
 ## Authors: coolkiwiii and Ken (alphabetically)
 
+** Update: Live website alternative ! https://vrcflakes.online/
 
 This Discord bot converts GIFs and MP4 files into sprite sheets for use as animated emojis in VRChat! Works with uploaded files, links, or GIFs from the Discord GIF menu! The bot also provides detailed information in a pretty embed :)
 
